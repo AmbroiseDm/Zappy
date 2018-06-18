@@ -1,0 +1,4 @@
+Base path: /opt/Unity/Editor/Data
+Cmd: initializeCompiler
+Cmd: preprocess
+  insize=440 outsize=1128 ok=1

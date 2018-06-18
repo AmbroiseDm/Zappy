@@ -1,0 +1,38 @@
+/*
+** time.c for zappy in /home/lerest_m/Desktop/Programmation/C/PSU/PSU_2016_zappy/Zappy_server/src/
+**
+** Made by Mewen Le Reste
+** Login   <mewen.lereste@epitech.eu>
+**
+** Started on  Wed Jun 28 14:36:50 2017 Mewen Le Reste
+** Last update Sun Jul  2 23:25:10 2017 Mewen Le Reste
+*/
+
+#include "zappy.h"
+
+
+void	start(t_zappy *zappy, t_timer *timer, unsigned int time_unit)
+{
+  timer->timer = clock();
+  timer->time_unit = time_unit;
+  timer->frequence = zappy->options.frequence;
+  timer->set = true;
+}
+
+bool	is_over(t_timer *timer)
+{
+  if (!timer->set)
+    {
+      printf("TRUE FDP\n");
+      return (true);
+    }
+  if ((double)clock() >= ((double)timer->timer +
+			  (((double)(timer->time_unit) /
+			    (double)(timer->frequence)) *
+			   (double)CLOCKS_PER_SEC)))
+    {
+      timer->set = false;
+      return (true);
+    }
+  return (false);
+}
